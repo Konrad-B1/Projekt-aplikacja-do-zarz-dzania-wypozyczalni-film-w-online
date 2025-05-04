@@ -1,0 +1,95 @@
+<diagram program="umletino" version="15.1"><zoom_level>8</zoom_level><element><id>UMLClass</id><coordinates><x>72</x><y>120</y><w>168</w><h>184</h></coordinates><panel_attributes>&lt;&lt;Encja&gt;&gt;
+Model::Uzytkownik
+{persistent}
+--
+-id: Long {primary key}
+-imie: String
+-email: String
+-haslo: String
+--
++zarejestruj(): boolean
++zaloguj(): boolean
++wypozyczFilm(filmId: Long): void
+--
+Odpowiedzialności:
+-- zarządzanie kontem użytkownika
+-- wykonywanie akcji wypożyczenia
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>328</x><y>408</y><w>184</w><h>184</h></coordinates><panel_attributes>&lt;&lt;Encja&gt;&gt;
+Model::Film
+{persistent}
+--
+-id: Long {primary key}
+-tytul: String
+-gatunek: String
+-opis: String
+-dostepny: Boolean
+--
++oznaczJakoUlubiony(): void
++pobierzDane(): String
+--
+Odpowiedzialności:
+-- przechowywanie danych filmu
+-- udostępnianie informacji o filmie</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>72</x><y>360</y><w>192</w><h>168</h></coordinates><panel_attributes>&lt;&lt;Encja&gt;&gt;
+Model::Wypozyczenie
+--
+-id: Long
+-dataWypozyczenia: Date
+-dataZwrotu: Date
+-status: String
+--
++rozpocznij(): void
++zakończ(): void
+--
+Odpowiedzialności:
+-- reprezentacja procesu wypożyczenia
+-- kontrola czasu trwania wypożyczenia
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>72</x><y>584</y><w>192</w><h>184</h></coordinates><panel_attributes>&lt;&lt;Encja&gt;&gt;
+Model::Platnosc
+{persistent}
+--
+-id: Long
+-kwota: Decimal
+-status: String
+-metoda: String
+-data: Date
+--
++przetworz(): boolean
++anuluj(): void
+--
+Odpowiedzialności:
+-- realizacja płatności za wypożyczenie
+-- kontrola statusu transakcji
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>328</x><y>112</y><w>216</w><h>192</h></coordinates><panel_attributes>&lt;&lt;Encja&gt;&gt;
+Model::Recenzja
+{persistent}
+--
+-id: Long
+-uzytkownikId: Long
+-filmId: Long
+-tresc: String
+-ocena: int
+-dataDodania: Date
+--
++zapisz(): void
++edytuj(nowatekst: String): void
+--
+Odpowiedzialności:
+-- przechowywanie opinii o filmie
+-- udostępnianie recenzji innym użytkownikom
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>144</x><y>296</y><w>32</w><h>80</h></coordinates><panel_attributes>lt=&gt;-
+1
+
+
+*</panel_attributes><additional_attributes>10;80;10;10</additional_attributes></element><element><id>Relation</id><coordinates><x>144</x><y>520</y><w>32</w><h>80</h></coordinates><panel_attributes>lt=-
+1
+
+
+1</panel_attributes><additional_attributes>10;10;10;80</additional_attributes></element><element><id>Relation</id><coordinates><x>400</x><y>296</y><w>32</w><h>128</h></coordinates><panel_attributes>lt=&gt;-
+*
+
+
+
+
+
+1</panel_attributes><additional_attributes>10;10;10;140</additional_attributes></element><element><id>Relation</id><coordinates><x>232</x><y>200</y><w>112</w><h>32</h></coordinates><panel_attributes>lt=&gt;-
+</panel_attributes><additional_attributes>120;20;10;20</additional_attributes></element><element><id>Text</id><coordinates><x>240</x><y>200</y><w>88</w><h>72</h></coordinates><panel_attributes>1                         *</panel_attributes><additional_attributes></additional_attributes></element></diagram>
